@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+int main() {
+
+	cout << "1.xxxx" << endl;
+	cout << "2.xxxx" << endl;
+	goto FLAG;//用于跳转代码
+	cout << "3.xxxx" << endl;
+	A:
+	cout << "4.xxxx" << endl;
+	FLAG:
+	cout << "5.xxxx" << endl;
+	goto A;
+	//此时无限循环
+
+	system("pause");
+	return 0;
+}
