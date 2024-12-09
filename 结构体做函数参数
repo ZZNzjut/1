@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+struct student
+{
+	string name;
+	int age;
+	int score;
+};
+//1.值传递
+void printstudent1(student s)
+{
+	s.age = 20;//形参改变时实参不会改变
+	cout << "子函数中 姓名：" << s.name << "年龄：" << s.age << "分数：" << s.score << endl;
+}
+
+
+//2.地址传递
+void printstudent2(student* p)
+{
+	p->age = 19;//形参改变时实参也会改变
+	cout << "子函数中 姓名：" << p->name << "年龄：" << p->age << "分数：" << p->score << endl;
+
+}
+int main() {
+
+	student s;//struct可以不写
+
+	s.name = "张三";
+	s.age = 18;
+
+	s.score = 100;
+	printstudent1(s);
+	printstudent2(&s);//地址传递可以改变对s实参的定义(在s后时）
+	cout << "main函数中打印 姓名：" << s.name << "年龄：" << s.age << "分数：" << s.score << endl;
+
+	system("pause");
+	return 0;
+}
