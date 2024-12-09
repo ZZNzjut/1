@@ -1,0 +1,61 @@
+#include<iostream>
+using namespace std;
+
+struct student
+{
+	string sname;
+	int score;
+};
+
+struct teacher
+{
+	string tname;
+	
+	student sarray[5];//用到student嵌套时往前放
+};
+
+void allocate(struct teacher tarray[], int len)
+{
+	string nameseed = "ABCDE";
+	for (int i = 0; i < len; i++)
+	{
+		tarray[i].tname = "teacher_";
+		tarray[i].tname += nameseed[i];
+		for (int j = 0; j < 5; j++)
+		{
+			tarray[i].sarray[j].sname = "student_";
+			tarray[i].sarray[j].sname += nameseed[j];
+			int random = rand() % 41 + 60;
+			tarray[i].sarray[j].score = random;
+		}
+	}
+
+
+}
+
+void 	printall(struct teacher tarray[], int len)
+{
+	for (int i = 0; i < len; i++)
+	{
+		cout << "老师姓名：" << tarray[i].tname << endl;
+		for (int j = 0; j < 5; j++)
+		{
+			cout << "\t学生姓名：" << tarray[i].sarray[j].sname<<" 学生分数："<< tarray[i].sarray[j].score<<endl;
+		}
+	}
+}
+
+
+
+int main() {
+	
+	teacher tarray[3];
+	int len = sizeof(tarray) / sizeof(tarray[0]);
+	allocate(tarray, len);
+
+	printall( tarray, len);
+
+
+	system("pause");
+	return 0;
+}
